@@ -1,9 +1,38 @@
 import type { NextPage } from 'next'
+import { useEffect } from 'react';
 import Head from 'next/head'
 import Image from 'next/image'
+import { Chart } from '@antv/g2';
 import styles from '../styles/Home.module.css'
 
 const Home: NextPage = () => {
+
+  useEffect(() => {
+    const data = [
+      { genre: 'Sports', sold: 275 },
+      { genre: 'Strategy', sold: 115 },
+      { genre: 'Action', sold: 120 },
+      { genre: 'Shooter', sold: 350 },
+      { genre: 'Other', sold: 150 },
+    ];
+
+    // Step 1: 创建 Chart 对象
+    const chart = new Chart({
+      container: 'g2-plot', // 指定图表容器 ID
+      width: 600, // 指定图表宽度
+      height: 300, // 指定图表高度
+    });
+
+    // Step 2: 载入数据源
+    chart.data(data);
+
+    // Step 3: 创建图形语法，绘制柱状图
+    chart.interval().position('genre*sold');
+
+    // Step 4: 渲染图表
+    chart.render();
+  }, []);
+
   return (
     <div className={styles.container}>
       <Head>
@@ -22,7 +51,9 @@ const Home: NextPage = () => {
           <code className={styles.code}>pages/index.tsx</code>
         </p>
 
-        <div className={styles.grid}>
+        <div id="g2-plot"></div>
+
+        {/* <div className={styles.grid}>
           <a href="https://nextjs.org/docs" className={styles.card}>
             <h2>Documentation &rarr;</h2>
             <p>Find in-depth information about Next.js features and API.</p>
@@ -50,7 +81,7 @@ const Home: NextPage = () => {
               Instantly deploy your Next.js site to a public URL with Vercel.
             </p>
           </a>
-        </div>
+        </div> */}
       </main>
 
       <footer className={styles.footer}>
