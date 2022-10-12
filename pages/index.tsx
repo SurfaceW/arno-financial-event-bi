@@ -7,15 +7,22 @@ import { diContainer } from '../modules/di';
 import styles from '../styles/Home.module.css';
 
 import type { NextPage } from 'next';
+import { RequestCacheController } from '@/biz/request-cache/controller';
 export async function getServerSideProps(context: any) {
   const db = diContainer.get<DBManager>('DB');
   await db.connect();
+  const reqCacheController = diContainer.get<RequestCacheController>('req.cache.controller');
+  const res = await reqCacheController.getRequestCacheByQueryParams('testParams');
   return {
-    props: {}, // will be passed to the page component as props
+    props: {
+      data: res?.responseContent,
+    }, // will be passed to the page component as props
   }
 }
 
-const Home: NextPage = () => {
+const Home: NextPage<{
+  data: string;
+}> = ({ data }) => {
   const chartRef = useRef<Chart>();
 
   useEffect(() => {
@@ -103,8 +110,8 @@ const Home: NextPage = () => {
         <h1 className={styles.title}>
           Welcome to <a href="https://arno.surfacew.com">Fin. BI Events</a>
         </h1>
+        <h2>{data}</h2>
         <div id="g2-plot"></div>
-
         {/* <div className={styles.grid}>
           <a href="https://nextjs.org/docs" className={styles.card}>
             <h2>Documentation &rarr;</h2>

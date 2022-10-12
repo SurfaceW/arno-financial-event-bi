@@ -1,3 +1,4 @@
+import { IRequestCacheDocumentModel, REQUEST_CACHE_COLLECTION_VALIDATION_JSON_SCHEMA } from "@/biz/request-cache/model";
 import { EnvManager } from "@/env/env";
 import { inject } from "inversify";
 import { Db } from "mongodb";
@@ -27,37 +28,13 @@ export class DBInitalizer {
       },
       validationLevel: 'strict',
       validator: {
-        $jsonSchema: {
-          bsonType: "object",
-          title: "Request Query Cache Validator Schema",
-          required: ["queryParams", "responseContent", "ttl"],
-          properties: {
-            queryParams: {
-              bsonType: "string",
-              description: "'queryParams' must be a string and is required"
-            },
-            ttl: {
-              bsonType: "int",
-              minimum: 1,
-              maximum: 10 * 365 * 24 * 60 * 60 * 1000 ,
-              description: "'ttl' must be an integer in [ 1, 10year ] and is required"
-            },
-            responseContent: {
-              bsonType: ["string"],
-              description: "'responseContent' must be a double if the field exists"
-            }
-          }
-        }
+        $jsonSchema: REQUEST_CACHE_COLLECTION_VALIDATION_JSON_SCHEMA,
       }
     });
   }
 
   async _testInsertRequestCache() {
-    this._db.collection<{
-      queryParams: string;
-      ttl: number;
-      responseContent: string;
-    }>('requestCache').insertOne({
+    this._db.collection<IRequestCacheDocumentModel>('requestCache').insertOne({
       queryParams: 'testQuery',
       ttl: 5000,
       responseContent: 'response'
@@ -65,11 +42,7 @@ export class DBInitalizer {
   }
 
   async _testDeleteRequestCache() {
-    this._db.collection<{
-      queryParams: string;
-      ttl: number;
-      responseContent: string;
-    }>('requestCache').deleteOne({
+    this._db.collection<IRequestCacheDocumentModel>('requestCache').deleteOne({
       queryParams: 'testQuery'
     });
   }

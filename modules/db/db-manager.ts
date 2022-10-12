@@ -33,6 +33,12 @@ export class DBManager {
     }
   }
 
+  getDBInstance(name?: string) {
+    return this.getDBClient().db(
+      name || this._envManager.getEnvParam('DB_NAME')
+    );
+  }
+
   getDBClient() {
     return this._mongoClient;
   }
