@@ -2,7 +2,7 @@
 import { IBaseResponseModel, IPaginationModel } from '@/biz/base/model';
 import { BIEventController } from '@/biz/bi-events/controller';
 import { convertDataToPropertyMap } from '@/biz/common/notion-helper';
-import { IBIEventModel } from '@/biz/request-cache/model';
+import { IBIEventModel } from '@/biz/bi-events/model';
 import { diContainer } from '@/di';
 import { PageObjectResponse } from '@notionhq/client/build/src/api-endpoints';
 

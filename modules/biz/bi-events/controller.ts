@@ -4,8 +4,7 @@ import { NotionDataSource } from "@/db/db-notion";
 import { EnvManager } from "@/env/env";
 import { inject, injectable } from "inversify";
 import { Collection, Db } from "mongodb";
-import { IBIEventModel } from "../request-cache/model";
-import { IRequestCacheDocumentModel } from "./model";
+import { IBIEventModel } from "../bi-events/model";
 
 @injectable()
 export class BIEventController {

@@ -1,4 +1,5 @@
 import { BIEventController } from '@/biz/bi-events/controller';
+import { WorldBankDataFetchController } from '@/biz/data/wb/controller';
 import { RequestCacheController } from '@/biz/request-cache/controller';
 import { DBInitalizer } from '@/db/db-initializer';
 import { NotionDataSource } from '@/db/db-notion';
@@ -23,4 +24,5 @@ diContainer.bind('DBNotion').to(NotionDataSource).inSingletonScope();
  * biz binding
  */
 diContainer.bind('req.cache.controller').to(RequestCacheController).inSingletonScope();
-diContainer.bind('events.controller').to(BIEventController).inTransientScope();
+diContainer.bind('events.controller').to(BIEventController).inSingletonScope();
+diContainer.bind('wb.data.controller').to(WorldBankDataFetchController).inSingletonScope();

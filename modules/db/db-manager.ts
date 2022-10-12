@@ -13,6 +13,7 @@ export class DBManager {
   private _mongoClient: MongoClient;
   constructor(
     @inject('Env') private _envManager: EnvManager,
+    // @ts-ignore
     @inject('Logger') private _logger: Logger,
   ) {
     this._host = this._envManager.getEnvParam('DB_HOST') || '127.0.0.1';

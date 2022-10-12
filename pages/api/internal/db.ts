@@ -23,5 +23,9 @@ export default async function handler(
     const dbInitializer = container.get<DBInitalizer>('DBInitializer');
     await dbInitializer.createCacheDataset();
   }
+  if (initParams === 'create-request-cached-collection-insertion-test') {
+    const dbInitializer = container.get<DBInitalizer>('DBInitializer');
+    dbInitializer._testInsertRequestCache();
+  }
   res.status(200).json({ success: true, status: 200, content: 'done' });
 }

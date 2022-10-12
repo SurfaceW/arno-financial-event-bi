@@ -1,9 +1,10 @@
 import { IRequestCacheDocumentModel, REQUEST_CACHE_COLLECTION_VALIDATION_JSON_SCHEMA } from "@/biz/request-cache/model";
 import { EnvManager } from "@/env/env";
-import { inject } from "inversify";
+import { inject, injectable } from "inversify";
 import { Db } from "mongodb";
 import { DBManager } from "./db-manager";
 
+@injectable()
 export class DBInitalizer {
 
   private _db: Db;
@@ -19,13 +20,14 @@ export class DBInitalizer {
 
   async createCacheDataset() {
     return await this._db.createCollection('requestCache', {
-      clusteredIndex: {
-        key: {
-          queryParams: 1,
-        },
-        unique: true,
-        name: 'request query params serial object'
-      },
+      // modgodb version 4.9 is not support clusteredIndex for performance
+      // clusteredIndex: {
+      //   key: {
+      //     queryParams: 1,
+      //   },
+      //   unique: true,
+      //   name: 'request query params serial object'
+      // },
       validationLevel: 'strict',
       validator: {
         $jsonSchema: REQUEST_CACHE_COLLECTION_VALIDATION_JSON_SCHEMA,
@@ -34,7 +36,7 @@ export class DBInitalizer {
   }
 
   async _testInsertRequestCache() {
-    this._db.collection<IRequestCacheDocumentModel>('requestCache').insertOne({
+    return this._db.collection<IRequestCacheDocumentModel>('requestCache').insertOne({
       queryParams: 'testQuery',
       ttl: 5000,
       responseContent: 'response'
@@ -42,7 +44,7 @@ export class DBInitalizer {
   }
 
   async _testDeleteRequestCache() {
-    this._db.collection<IRequestCacheDocumentModel>('requestCache').deleteOne({
+    return this._db.collection<IRequestCacheDocumentModel>('requestCache').deleteOne({
       queryParams: 'testQuery'
     });
   }
