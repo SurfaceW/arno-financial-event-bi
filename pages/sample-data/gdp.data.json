@@ -1,0 +1,813 @@
+[
+  {
+    "page": 1,
+    "pages": 2,
+    "per_page": 50,
+    "total": 62,
+    "sourceid": "2",
+    "sourcename": "World Development Indicators",
+    "lastupdated": "2022-09-16"
+  },
+  [
+    {
+      "indicator": {
+        "id": "NY.GDP.MKTP.CD",
+        "value": "GDP (current US$)"
+      },
+      "country": {
+        "id": "BR",
+        "value": "Brazil"
+      },
+      "countryiso3code": "BRA",
+      "date": "2021",
+      "value": 1608981220812.2,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 0
+    },
+    {
+      "indicator": {
+        "id": "NY.GDP.MKTP.CD",
+        "value": "GDP (current US$)"
+      },
+      "country": {
+        "id": "BR",
+        "value": "Brazil"
+      },
+      "countryiso3code": "BRA",
+      "date": "2020",
+      "value": 1448565936739.56,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 0
+    },
+    {
+      "indicator": {
+        "id": "NY.GDP.MKTP.CD",
+        "value": "GDP (current US$)"
+      },
+      "country": {
+        "id": "BR",
+        "value": "Brazil"
+      },
+      "countryiso3code": "BRA",
+      "date": "2019",
+      "value": 1873288158977.23,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 0
+    },
+    {
+      "indicator": {
+        "id": "NY.GDP.MKTP.CD",
+        "value": "GDP (current US$)"
+      },
+      "country": {
+        "id": "BR",
+        "value": "Brazil"
+      },
+      "countryiso3code": "BRA",
+      "date": "2018",
+      "value": 1916933708381.89,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 0
+    },
+    {
+      "indicator": {
+        "id": "NY.GDP.MKTP.CD",
+        "value": "GDP (current US$)"
+      },
+      "country": {
+        "id": "BR",
+        "value": "Brazil"
+      },
+      "countryiso3code": "BRA",
+      "date": "2017",
+      "value": 2063514688761.98,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 0
+    },
+    {
+      "indicator": {
+        "id": "NY.GDP.MKTP.CD",
+        "value": "GDP (current US$)"
+      },
+      "country": {
+        "id": "BR",
+        "value": "Brazil"
+      },
+      "countryiso3code": "BRA",
+      "date": "2016",
+      "value": 1795693265810.23,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 0
+    },
+    {
+      "indicator": {
+        "id": "NY.GDP.MKTP.CD",
+        "value": "GDP (current US$)"
+      },
+      "country": {
+        "id": "BR",
+        "value": "Brazil"
+      },
+      "countryiso3code": "BRA",
+      "date": "2015",
+      "value": 1802211999538.68,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 0
+    },
+    {
+      "indicator": {
+        "id": "NY.GDP.MKTP.CD",
+        "value": "GDP (current US$)"
+      },
+      "country": {
+        "id": "BR",
+        "value": "Brazil"
+      },
+      "countryiso3code": "BRA",
+      "date": "2014",
+      "value": 2456043766028.73,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 0
+    },
+    {
+      "indicator": {
+        "id": "NY.GDP.MKTP.CD",
+        "value": "GDP (current US$)"
+      },
+      "country": {
+        "id": "BR",
+        "value": "Brazil"
+      },
+      "countryiso3code": "BRA",
+      "date": "2013",
+      "value": 2472819362216.69,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 0
+    },
+    {
+      "indicator": {
+        "id": "NY.GDP.MKTP.CD",
+        "value": "GDP (current US$)"
+      },
+      "country": {
+        "id": "BR",
+        "value": "Brazil"
+      },
+      "countryiso3code": "BRA",
+      "date": "2012",
+      "value": 2465228293894.01,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 0
+    },
+    {
+      "indicator": {
+        "id": "NY.GDP.MKTP.CD",
+        "value": "GDP (current US$)"
+      },
+      "country": {
+        "id": "BR",
+        "value": "Brazil"
+      },
+      "countryiso3code": "BRA",
+      "date": "2011",
+      "value": 2616156606666.62,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 0
+    },
+    {
+      "indicator": {
+        "id": "NY.GDP.MKTP.CD",
+        "value": "GDP (current US$)"
+      },
+      "country": {
+        "id": "BR",
+        "value": "Brazil"
+      },
+      "countryiso3code": "BRA",
+      "date": "2010",
+      "value": 2208838108577.09,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 0
+    },
+    {
+      "indicator": {
+        "id": "NY.GDP.MKTP.CD",
+        "value": "GDP (current US$)"
+      },
+      "country": {
+        "id": "BR",
+        "value": "Brazil"
+      },
+      "countryiso3code": "BRA",
+      "date": "2009",
+      "value": 1666996294372.87,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 0
+    },
+    {
+      "indicator": {
+        "id": "NY.GDP.MKTP.CD",
+        "value": "GDP (current US$)"
+      },
+      "country": {
+        "id": "BR",
+        "value": "Brazil"
+      },
+      "countryiso3code": "BRA",
+      "date": "2008",
+      "value": 1695855391810.9,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 0
+    },
+    {
+      "indicator": {
+        "id": "NY.GDP.MKTP.CD",
+        "value": "GDP (current US$)"
+      },
+      "country": {
+        "id": "BR",
+        "value": "Brazil"
+      },
+      "countryiso3code": "BRA",
+      "date": "2007",
+      "value": 1397114247331.17,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 0
+    },
+    {
+      "indicator": {
+        "id": "NY.GDP.MKTP.CD",
+        "value": "GDP (current US$)"
+      },
+      "country": {
+        "id": "BR",
+        "value": "Brazil"
+      },
+      "countryiso3code": "BRA",
+      "date": "2006",
+      "value": 1107626711406.63,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 0
+    },
+    {
+      "indicator": {
+        "id": "NY.GDP.MKTP.CD",
+        "value": "GDP (current US$)"
+      },
+      "country": {
+        "id": "BR",
+        "value": "Brazil"
+      },
+      "countryiso3code": "BRA",
+      "date": "2005",
+      "value": 891633826603.377,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 0
+    },
+    {
+      "indicator": {
+        "id": "NY.GDP.MKTP.CD",
+        "value": "GDP (current US$)"
+      },
+      "country": {
+        "id": "BR",
+        "value": "Brazil"
+      },
+      "countryiso3code": "BRA",
+      "date": "2004",
+      "value": 669289321944.516,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 0
+    },
+    {
+      "indicator": {
+        "id": "NY.GDP.MKTP.CD",
+        "value": "GDP (current US$)"
+      },
+      "country": {
+        "id": "BR",
+        "value": "Brazil"
+      },
+      "countryiso3code": "BRA",
+      "date": "2003",
+      "value": 558233724164.711,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 0
+    },
+    {
+      "indicator": {
+        "id": "NY.GDP.MKTP.CD",
+        "value": "GDP (current US$)"
+      },
+      "country": {
+        "id": "BR",
+        "value": "Brazil"
+      },
+      "countryiso3code": "BRA",
+      "date": "2002",
+      "value": 509795270685.19,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 0
+    },
+    {
+      "indicator": {
+        "id": "NY.GDP.MKTP.CD",
+        "value": "GDP (current US$)"
+      },
+      "country": {
+        "id": "BR",
+        "value": "Brazil"
+      },
+      "countryiso3code": "BRA",
+      "date": "2001",
+      "value": 559983704094.17,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 0
+    },
+    {
+      "indicator": {
+        "id": "NY.GDP.MKTP.CD",
+        "value": "GDP (current US$)"
+      },
+      "country": {
+        "id": "BR",
+        "value": "Brazil"
+      },
+      "countryiso3code": "BRA",
+      "date": "2000",
+      "value": 655448188259.351,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 0
+    },
+    {
+      "indicator": {
+        "id": "NY.GDP.MKTP.CD",
+        "value": "GDP (current US$)"
+      },
+      "country": {
+        "id": "BR",
+        "value": "Brazil"
+      },
+      "countryiso3code": "BRA",
+      "date": "1999",
+      "value": 599642075004.471,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 0
+    },
+    {
+      "indicator": {
+        "id": "NY.GDP.MKTP.CD",
+        "value": "GDP (current US$)"
+      },
+      "country": {
+        "id": "BR",
+        "value": "Brazil"
+      },
+      "countryiso3code": "BRA",
+      "date": "1998",
+      "value": 863711007325.493,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 0
+    },
+    {
+      "indicator": {
+        "id": "NY.GDP.MKTP.CD",
+        "value": "GDP (current US$)"
+      },
+      "country": {
+        "id": "BR",
+        "value": "Brazil"
+      },
+      "countryiso3code": "BRA",
+      "date": "1997",
+      "value": 883206452795.124,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 0
+    },
+    {
+      "indicator": {
+        "id": "NY.GDP.MKTP.CD",
+        "value": "GDP (current US$)"
+      },
+      "country": {
+        "id": "BR",
+        "value": "Brazil"
+      },
+      "countryiso3code": "BRA",
+      "date": "1996",
+      "value": 850426433004.077,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 0
+    },
+    {
+      "indicator": {
+        "id": "NY.GDP.MKTP.CD",
+        "value": "GDP (current US$)"
+      },
+      "country": {
+        "id": "BR",
+        "value": "Brazil"
+      },
+      "countryiso3code": "BRA",
+      "date": "1995",
+      "value": 769333330368.987,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 0
+    },
+    {
+      "indicator": {
+        "id": "NY.GDP.MKTP.CD",
+        "value": "GDP (current US$)"
+      },
+      "country": {
+        "id": "BR",
+        "value": "Brazil"
+      },
+      "countryiso3code": "BRA",
+      "date": "1994",
+      "value": 525369851353.742,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 0
+    },
+    {
+      "indicator": {
+        "id": "NY.GDP.MKTP.CD",
+        "value": "GDP (current US$)"
+      },
+      "country": {
+        "id": "BR",
+        "value": "Brazil"
+      },
+      "countryiso3code": "BRA",
+      "date": "1993",
+      "value": 368295777770.079,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 0
+    },
+    {
+      "indicator": {
+        "id": "NY.GDP.MKTP.CD",
+        "value": "GDP (current US$)"
+      },
+      "country": {
+        "id": "BR",
+        "value": "Brazil"
+      },
+      "countryiso3code": "BRA",
+      "date": "1992",
+      "value": 328187944300.908,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 0
+    },
+    {
+      "indicator": {
+        "id": "NY.GDP.MKTP.CD",
+        "value": "GDP (current US$)"
+      },
+      "country": {
+        "id": "BR",
+        "value": "Brazil"
+      },
+      "countryiso3code": "BRA",
+      "date": "1991",
+      "value": 342609227209.645,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 0
+    },
+    {
+      "indicator": {
+        "id": "NY.GDP.MKTP.CD",
+        "value": "GDP (current US$)"
+      },
+      "country": {
+        "id": "BR",
+        "value": "Brazil"
+      },
+      "countryiso3code": "BRA",
+      "date": "1990",
+      "value": 390725626002.866,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 0
+    },
+    {
+      "indicator": {
+        "id": "NY.GDP.MKTP.CD",
+        "value": "GDP (current US$)"
+      },
+      "country": {
+        "id": "BR",
+        "value": "Brazil"
+      },
+      "countryiso3code": "BRA",
+      "date": "1989",
+      "value": 347028139590.227,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 0
+    },
+    {
+      "indicator": {
+        "id": "NY.GDP.MKTP.CD",
+        "value": "GDP (current US$)"
+      },
+      "country": {
+        "id": "BR",
+        "value": "Brazil"
+      },
+      "countryiso3code": "BRA",
+      "date": "1988",
+      "value": 258816125587.505,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 0
+    },
+    {
+      "indicator": {
+        "id": "NY.GDP.MKTP.CD",
+        "value": "GDP (current US$)"
+      },
+      "country": {
+        "id": "BR",
+        "value": "Brazil"
+      },
+      "countryiso3code": "BRA",
+      "date": "1987",
+      "value": 237517984427.806,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 0
+    },
+    {
+      "indicator": {
+        "id": "NY.GDP.MKTP.CD",
+        "value": "GDP (current US$)"
+      },
+      "country": {
+        "id": "BR",
+        "value": "Brazil"
+      },
+      "countryiso3code": "BRA",
+      "date": "1986",
+      "value": 215878631802.78,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 0
+    },
+    {
+      "indicator": {
+        "id": "NY.GDP.MKTP.CD",
+        "value": "GDP (current US$)"
+      },
+      "country": {
+        "id": "BR",
+        "value": "Brazil"
+      },
+      "countryiso3code": "BRA",
+      "date": "1985",
+      "value": 176123719326.593,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 0
+    },
+    {
+      "indicator": {
+        "id": "NY.GDP.MKTP.CD",
+        "value": "GDP (current US$)"
+      },
+      "country": {
+        "id": "BR",
+        "value": "Brazil"
+      },
+      "countryiso3code": "BRA",
+      "date": "1984",
+      "value": 188339974086.58,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 0
+    },
+    {
+      "indicator": {
+        "id": "NY.GDP.MKTP.CD",
+        "value": "GDP (current US$)"
+      },
+      "country": {
+        "id": "BR",
+        "value": "Brazil"
+      },
+      "countryiso3code": "BRA",
+      "date": "1983",
+      "value": 189656506321.431,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 0
+    },
+    {
+      "indicator": {
+        "id": "NY.GDP.MKTP.CD",
+        "value": "GDP (current US$)"
+      },
+      "country": {
+        "id": "BR",
+        "value": "Brazil"
+      },
+      "countryiso3code": "BRA",
+      "date": "1982",
+      "value": 271314113768.417,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 0
+    },
+    {
+      "indicator": {
+        "id": "NY.GDP.MKTP.CD",
+        "value": "GDP (current US$)"
+      },
+      "country": {
+        "id": "BR",
+        "value": "Brazil"
+      },
+      "countryiso3code": "BRA",
+      "date": "1981",
+      "value": 258015174748.648,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 0
+    },
+    {
+      "indicator": {
+        "id": "NY.GDP.MKTP.CD",
+        "value": "GDP (current US$)"
+      },
+      "country": {
+        "id": "BR",
+        "value": "Brazil"
+      },
+      "countryiso3code": "BRA",
+      "date": "1980",
+      "value": 237393489892.637,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 0
+    },
+    {
+      "indicator": {
+        "id": "NY.GDP.MKTP.CD",
+        "value": "GDP (current US$)"
+      },
+      "country": {
+        "id": "BR",
+        "value": "Brazil"
+      },
+      "countryiso3code": "BRA",
+      "date": "1979",
+      "value": 221338204480.222,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 0
+    },
+    {
+      "indicator": {
+        "id": "NY.GDP.MKTP.CD",
+        "value": "GDP (current US$)"
+      },
+      "country": {
+        "id": "BR",
+        "value": "Brazil"
+      },
+      "countryiso3code": "BRA",
+      "date": "1978",
+      "value": 200278646123.581,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 0
+    },
+    {
+      "indicator": {
+        "id": "NY.GDP.MKTP.CD",
+        "value": "GDP (current US$)"
+      },
+      "country": {
+        "id": "BR",
+        "value": "Brazil"
+      },
+      "countryiso3code": "BRA",
+      "date": "1977",
+      "value": 176344101401.941,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 0
+    },
+    {
+      "indicator": {
+        "id": "NY.GDP.MKTP.CD",
+        "value": "GDP (current US$)"
+      },
+      "country": {
+        "id": "BR",
+        "value": "Brazil"
+      },
+      "countryiso3code": "BRA",
+      "date": "1976",
+      "value": 153168949208.207,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 0
+    },
+    {
+      "indicator": {
+        "id": "NY.GDP.MKTP.CD",
+        "value": "GDP (current US$)"
+      },
+      "country": {
+        "id": "BR",
+        "value": "Brazil"
+      },
+      "countryiso3code": "BRA",
+      "date": "1975",
+      "value": 129203555238.827,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 0
+    },
+    {
+      "indicator": {
+        "id": "NY.GDP.MKTP.CD",
+        "value": "GDP (current US$)"
+      },
+      "country": {
+        "id": "BR",
+        "value": "Brazil"
+      },
+      "countryiso3code": "BRA",
+      "date": "1974",
+      "value": 109794519727.538,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 0
+    },
+    {
+      "indicator": {
+        "id": "NY.GDP.MKTP.CD",
+        "value": "GDP (current US$)"
+      },
+      "country": {
+        "id": "BR",
+        "value": "Brazil"
+      },
+      "countryiso3code": "BRA",
+      "date": "1973",
+      "value": 83592275862.9982,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 0
+    },
+    {
+      "indicator": {
+        "id": "NY.GDP.MKTP.CD",
+        "value": "GDP (current US$)"
+      },
+      "country": {
+        "id": "BR",
+        "value": "Brazil"
+      },
+      "countryiso3code": "BRA",
+      "date": "1972",
+      "value": 58434858374.8696,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 0
+    }
+  ]
+]

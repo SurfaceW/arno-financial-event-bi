@@ -1,37 +1,86 @@
-import type { NextPage } from 'next'
-import { useEffect } from 'react';
-import Head from 'next/head'
-import Image from 'next/image'
+import type { NextPage } from 'next';
+import { useEffect, useRef } from 'react';
+import Head from 'next/head';
+import Image from 'next/image';
 import { Chart } from '@antv/g2';
-import styles from '../styles/Home.module.css'
+import styles from '../styles/Home.module.css';
 
 const Home: NextPage = () => {
+  const chartRef = useRef<Chart>();
 
   useEffect(() => {
-    const data = [
-      { genre: 'Sports', sold: 275 },
-      { genre: 'Strategy', sold: 115 },
-      { genre: 'Action', sold: 120 },
-      { genre: 'Shooter', sold: 350 },
-      { genre: 'Other', sold: 150 },
-    ];
-
-    // Step 1: 创建 Chart 对象
-    const chart = new Chart({
-      container: 'g2-plot', // 指定图表容器 ID
-      width: 600, // 指定图表宽度
-      height: 300, // 指定图表高度
-    });
-
-    // Step 2: 载入数据源
-    chart.data(data);
-
-    // Step 3: 创建图形语法，绘制柱状图
-    chart.interval().position('genre*sold');
-
-    // Step 4: 渲染图表
-    chart.render();
-  }, []);
+    if (!chartRef?.current) {
+      const chart = new Chart({
+        container: 'g2-plot',
+        autoFit: true,
+        width: 1200,
+        height: 500,
+        padding: [30, 20, 70, 30],
+      });
+      chartRef.current = chart;
+      fetch('https://gw.alipayobjects.com/os/antvdemo/assets/data/blockchain.json')
+        .then((res) => res.json())
+        .then((data) => {
+          chart.data(data);
+          chart.scale({
+            nlp: {
+              min: 0,
+              max: 100,
+            },
+            blockchain: {
+              min: 0,
+              max: 100,
+            },
+          });
+          chart.axis('nlp', false);
+          chart.legend({
+            custom: true,
+            items: [
+              {
+                name: 'blockchain',
+                value: 'blockchain',
+                marker: { symbol: 'line', style: { stroke: '#1890ff', lineWidth: 2 } },
+              },
+              {
+                name: 'nlp',
+                value: 'nlp',
+                marker: { symbol: 'line', style: { stroke: '#2fc25b', lineWidth: 2 } },
+              },
+            ],
+          });
+          chart.line().position('date*blockchain').color('#1890ff');
+          chart.line().position('date*nlp').color('#2fc25b');
+          chart.annotation().dataMarker({
+            top: true,
+            position: ['2016-02-28', 9],
+            text: {
+              content: 'Blockchain 首超 NLP',
+              style: {
+                textAlign: 'left',
+              },
+            },
+            line: {
+              length: 30,
+            },
+          });
+          chart.annotation().dataMarker({
+            top: true,
+            position: ['2017-12-17', 100],
+            line: {
+              length: 30,
+            },
+            text: {
+              content: '2017-12-17, 受比特币影响，\n blockchain搜索热度达到顶峰\n峰值：100',
+              style: {
+                textAlign: 'right',
+              },
+            },
+          });
+          chart.removeInteraction('legend-filter'); // 自定义图例，移除默认的分类图例筛选交互
+          chart.render();
+        });
+    }
+  }, [chartRef]);
 
   return (
     <div className={styles.container}>
@@ -43,14 +92,8 @@ const Home: NextPage = () => {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+          Welcome to <a href="https://arno.surfacew.com">Fin. BI Events</a>
         </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.tsx</code>
-        </p>
-
         <div id="g2-plot"></div>
 
         {/* <div className={styles.grid}>
@@ -83,21 +126,11 @@ const Home: NextPage = () => {
           </a>
         </div> */}
       </main>
-
       <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
+        Hello, Arno Fin. BI.
       </footer>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
