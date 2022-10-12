@@ -33,6 +33,10 @@ export class DBManager {
     }
   }
 
+  getDBClient() {
+    return this._mongoClient;
+  }
+
   /**
    * generate mongodb uri
    * @doc https://www.mongodb.com/docs/drivers/node/current/fundamentals/connection/connect/#std-label-node-connect-to-mongodb

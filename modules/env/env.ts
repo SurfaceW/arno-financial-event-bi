@@ -1,4 +1,4 @@
-import { injectable  } from 'inversify';
+import { injectable } from 'inversify';
 
 @injectable()
 export class EnvManager {
@@ -13,5 +13,9 @@ export class EnvManager {
 
   getNodeEnv(): 'production' | 'development' {
     return this._processEnvMap['NODE'] as 'production' | 'development';
+  }
+
+  getCwd() {
+    return process.cwd();
   }
 }
