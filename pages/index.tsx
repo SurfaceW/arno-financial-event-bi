@@ -4,6 +4,17 @@ import Head from 'next/head';
 import Image from 'next/image';
 import { Chart } from '@antv/g2';
 import styles from '../styles/Home.module.css';
+import { diContainer } from '../modules/di';
+import { Logger } from 'pino';
+import { DBManager } from '../modules/db/db-manager';
+
+export async function getServerSideProps(context: any) {
+  const db = diContainer.get<DBManager>('DB');
+  await db.connect();
+  return {
+    props: {}, // will be passed to the page component as props
+  }
+}
 
 const Home: NextPage = () => {
   const chartRef = useRef<Chart>();
