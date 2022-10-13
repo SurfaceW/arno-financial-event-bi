@@ -1,9 +1,17 @@
 import 'reflect-metadata';
 
+import { IBaseResponseModel, IPaginationModel } from '@/biz/base/model';
+import { BIEventController } from '@/biz/bi-events/controller';
+import { IBIEventModel } from '@/biz/bi-events/model';
+import { convertDataToPropertyMap } from '@/biz/common/notion-helper';
+import { WorldBankDataFetchController } from '@/biz/data/wb/controller';
+import { convertToChartData } from '@/biz/data/wb/helper';
 import { RequestCacheController } from '@/biz/request-cache/controller';
 import { Chart } from '@antv/g2';
 import Head from 'next/head';
+import { Logger } from 'pino';
 import { useEffect, useRef } from 'react';
+import { find } from 'lodash';
 
 import { DBManager } from '../modules/db/db-manager';
 import { diContainer } from '../modules/di';
@@ -12,19 +20,31 @@ import styles from '../styles/Home.module.css';
 import type { NextPage } from 'next';
 export async function getServerSideProps(context: any) {
   const db = diContainer.get<DBManager>('DB');
-  await db.connect();
+  const logger = diContainer.get<Logger>('Logger');
   const reqCacheController = diContainer.get<RequestCacheController>('req.cache.controller');
-  const res = await reqCacheController.getRequestCacheByQueryParams('testParams');
+  const wbDataController = diContainer.get<WorldBankDataFetchController>('wb.data.controller');
+  const biEventsController = diContainer.get<BIEventController>('events.controller');
+  await db.connect();
+  // const res = await reqCacheController.getRequestCacheByQueryParams('testQuery');
+  // logger.info('current response', res);
+  const res = await wbDataController.getGDPViaNationCode('CN');
+  const events = await biEventsController.getEventListAll();
   return {
     props: {
-      data: res?.responseContent,
+      gdpData: convertToChartData(res as any)  || null,
+      eventData: events?.results.map(i => convertDataToPropertyMap(i as PageObjectResponse)) as any,
     }, // will be passed to the page component as props
   }
 }
 
 const Home: NextPage<{
-  data: string;
-}> = ({ data }) => {
+  gdpData: Array<{
+    date: string,
+    value: number,
+    unit: string,
+  }>;
+  eventData: IBIEventModel[];
+}> = ({ gdpData, eventData  }) => {
   const chartRef = useRef<Chart>();
 
   useEffect(() => {
@@ -32,74 +52,67 @@ const Home: NextPage<{
       const chart = new Chart({
         container: 'g2-plot',
         autoFit: true,
-        width: 1200,
+        width: 2000,
         height: 500,
         padding: [30, 20, 70, 30],
       });
       chartRef.current = chart;
-      fetch('https://gw.alipayobjects.com/os/antvdemo/assets/data/blockchain.json')
-        .then((res) => res.json())
-        .then((data) => {
-          chart.data(data);
-          chart.scale({
-            nlp: {
-              min: 0,
-              max: 100,
-            },
-            blockchain: {
-              min: 0,
-              max: 100,
-            },
-          });
-          chart.axis('nlp', false);
-          chart.legend({
-            custom: true,
-            items: [
-              {
-                name: 'blockchain',
-                value: 'blockchain',
-                marker: { symbol: 'line', style: { stroke: '#1890ff', lineWidth: 2 } },
-              },
-              {
-                name: 'nlp',
-                value: 'nlp',
-                marker: { symbol: 'line', style: { stroke: '#2fc25b', lineWidth: 2 } },
-              },
-            ],
-          });
-          chart.line().position('date*blockchain').color('#1890ff');
-          chart.line().position('date*nlp').color('#2fc25b');
-          chart.annotation().dataMarker({
-            top: true,
-            position: ['2016-02-28', 9],
-            text: {
-              content: 'Blockchain 首超 NLP',
-              style: {
-                textAlign: 'left',
-              },
-            },
-            line: {
-              length: 30,
-            },
-          });
-          chart.annotation().dataMarker({
-            top: true,
-            position: ['2017-12-17', 100],
-            line: {
-              length: 30,
-            },
-            text: {
-              content: '2017-12-17, 受比特币影响，\n blockchain搜索热度达到顶峰\n峰值：100',
-              style: {
-                textAlign: 'right',
-              },
-            },
-          });
-          chart.removeInteraction('legend-filter'); // 自定义图例，移除默认的分类图例筛选交互
-          chart.render();
+      console.log('chart data:', 'gdp:', gdpData, 'event', eventData);
+      chart.data(gdpData.reverse());
+      chart.scale({
+        value: {
+          min: Math.min(...gdpData.map(i => i.value)),
+          max: 100,
+        },
+      });
+      chart.axis('value', false);
+      chart.legend({
+        custom: true,
+        items: [
+          {
+            name: '中国 GDP',
+            value: 'value',
+            marker: { symbol: 'line', style: { stroke: '#1890ff', lineWidth: 2 } },
+          },
+        ],
+      });
+      chart.line().position('date*value').color('#1890ff');
+      // chart.line().position('date*nlp').color('#2fc25b');
+      eventData.forEach((event) => {
+        const fullYear = String(new Date(event.startTime).getFullYear());
+        const value = find(gdpData, { date: fullYear })?.value || 0;
+        // chart.annotation().dataMarker({
+        //   top: true,
+        //   position: {
+        //     date: fullYear,
+        //     value:  find(gdpData, { date: fullYear })?.value || 0,
+        //   },
+        //   text: {
+        //     content: event.name,
+        //     style: {
+        //       textAlign: 'left',
+        //     }
+        //   },
+        //   line: {
+        //     length: 30,
+        //   }
+        // });
+        chart.annotation().line({
+          text: {
+            content: event.name,
+            style: {
+              textAlign: 'left'
+            }
+          },
+          top: true,
+          start: [fullYear, value],
+          end: [String(+fullYear + 1), value],
         });
+      });
+      chart.removeInteraction('legend-filter'); // 自定义图例，移除默认的分类图例筛选交互
+      chart.render();
     }
-  }, [chartRef]);
+  }, [chartRef, gdpData, eventData]);
 
   return (
     <div className={styles.container}>
@@ -110,42 +123,12 @@ const Home: NextPage<{
       </Head>
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="https://arno.surfacew.com">Fin. BI Events</a>
+          GDP MacroEvents Analysis
         </h1>
-        <h2>{data}</h2>
         <div id="g2-plot"></div>
-        {/* <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div> */}
       </main>
       <footer className={styles.footer}>
-        Hello, Arno Fin. BI.
+        Arno Fin. BI.
       </footer>
     </div>
   );

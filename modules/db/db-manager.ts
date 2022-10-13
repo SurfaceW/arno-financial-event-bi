@@ -26,8 +26,8 @@ export class DBManager {
   async connect() {
     try {
       if (this._host && this._pass && this._userName && this._port) {
-        // await this._mongoClient.connect();
-        this._logger.info(this._getMongoDBAddress())
+        await this._mongoClient.connect();
+        this._logger.info('db connected successfully')
       }
     } catch(e) {
       this._logger.error(e);

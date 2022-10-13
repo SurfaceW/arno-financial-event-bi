@@ -1,9 +1,10 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import type { NextApiRequest, NextApiResponse } from 'next'
-import { container, diContainer } from '@/di';
+import { REQUEST_CACHE_COLLECTION_VALIDATION_JSON_SCHEMA } from '@/biz/request-cache/model';
 import { DBInitalizer } from '@/db/db-initializer';
+import { container, diContainer } from '@/di';
 import { EnvManager } from '@/env/env';
 
+import type { NextApiRequest, NextApiResponse } from 'next'
 type IResponse = {
   success: boolean;
   status: number;
@@ -27,13 +28,16 @@ export default async function handler(
     return;
   }
   const initParams = req.query?.initParam;
-  if (!initParams) res.status(200).json({
+  if (!initParams) return res.status(200).json({
     success: true,
     status: 200,
     content: 'no operation executed.',
   });
   if (initParams === 'create-request-cached-collection') {
     await dbInitializer.createCacheDataset();
+  }
+  if (initParams === 'update-request-cached-collection') {
+    await dbInitializer.updateCollectionSchema(REQUEST_CACHE_COLLECTION_VALIDATION_JSON_SCHEMA);
   }
   if (initParams === 'create-request-cached-collection-insertion-test') {
     await dbInitializer._testInsertRequestCache();

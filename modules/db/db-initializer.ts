@@ -4,6 +4,8 @@ import { inject, injectable } from "inversify";
 import { Db } from "mongodb";
 import { DBManager } from "./db-manager";
 
+const TARGET_COLLECTION_NAME = 'requestCache';
+
 @injectable()
 export class DBInitalizer {
 
@@ -28,23 +30,33 @@ export class DBInitalizer {
       //   unique: true,
       //   name: 'request query params serial object'
       // },
-      validationLevel: 'strict',
+      // validationLevel: 'strict',
+      // validator: {
+      //   $jsonSchema: REQUEST_CACHE_COLLECTION_VALIDATION_JSON_SCHEMA,
+      // }
+    });
+  }
+
+  async updateCollectionSchema(schema: any) {
+    return await this._db.command({
+      collMod: TARGET_COLLECTION_NAME,
       validator: {
-        $jsonSchema: REQUEST_CACHE_COLLECTION_VALIDATION_JSON_SCHEMA,
+        $jsonSchema: schema,
       }
     });
   }
 
   async _testInsertRequestCache() {
-    return this._db.collection<IRequestCacheDocumentModel>('requestCache').insertOne({
+    return this._db.collection<IRequestCacheDocumentModel>(TARGET_COLLECTION_NAME).insertOne({
       queryParams: 'testQuery',
       ttl: 5000,
-      responseContent: 'response'
+      responseContent: 'response',
+      cacheTime: 100000,
     });
   }
 
   async _testDeleteRequestCache() {
-    return this._db.collection<IRequestCacheDocumentModel>('requestCache').deleteOne({
+    return this._db.collection<IRequestCacheDocumentModel>(TARGET_COLLECTION_NAME).deleteOne({
       queryParams: 'testQuery'
     });
   }
