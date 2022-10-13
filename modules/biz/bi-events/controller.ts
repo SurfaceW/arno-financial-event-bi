@@ -1,10 +1,6 @@
-import { DBRequestController } from "@/db/db-controller";
-import { DBManager } from "@/db/db-manager";
-import { NotionDataSource } from "@/db/db-notion";
-import { EnvManager } from "@/env/env";
-import { inject, injectable } from "inversify";
-import { Collection, Db } from "mongodb";
-import { IBIEventModel } from "../bi-events/model";
+import { NotionDataSource } from '@/db/db-notion';
+import { EnvManager } from '@/env/env';
+import { inject, injectable } from 'inversify';
 
 @injectable()
 export class BIEventController {

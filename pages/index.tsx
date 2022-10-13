@@ -1,3 +1,6 @@
+import 'reflect-metadata';
+
+import { RequestCacheController } from '@/biz/request-cache/controller';
 import { Chart } from '@antv/g2';
 import Head from 'next/head';
 import { useEffect, useRef } from 'react';
@@ -7,7 +10,6 @@ import { diContainer } from '../modules/di';
 import styles from '../styles/Home.module.css';
 
 import type { NextPage } from 'next';
-import { RequestCacheController } from '@/biz/request-cache/controller';
 export async function getServerSideProps(context: any) {
   const db = diContainer.get<DBManager>('DB');
   await db.connect();

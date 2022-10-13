@@ -4,6 +4,7 @@ import { RequestCacheController } from '@/biz/request-cache/controller';
 import { DBInitalizer } from '@/db/db-initializer';
 import { NotionDataSource } from '@/db/db-notion';
 import { Container } from 'inversify';
+
 import { DataCacheManager } from '../cache/cache-manager';
 import { DBManager } from '../db/db-manager';
 import { EnvManager } from '../env/env';
